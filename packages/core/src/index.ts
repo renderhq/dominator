@@ -4,6 +4,7 @@ export * from './patch.ts';
 export * from './batch.ts';
 export * from './events.ts';
 export * from './pool.ts';
+export * from './signal.ts';
 
 
 export interface DominatorApp<T> {

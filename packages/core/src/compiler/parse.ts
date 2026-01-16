@@ -20,7 +20,7 @@ export const parse = (template: string): ASTNode => {
 
             const props: Record<string, any> = {};
             while (template[pos] !== '>' && template[pos] !== '/') {
-                if (template[pos] === ' ') {
+                if (/\s/.test(template[pos])) {
                     pos++;
                     continue;
                 }
@@ -31,12 +31,24 @@ export const parse = (template: string): ASTNode => {
                 if (template[pos] === '=') {
                     pos++; // skip =
                     let value = '';
-                    const quote = template[pos++];
-                    while (template[pos] !== quote) {
-                        value += template[pos++];
+                    if (template[pos] === '{') {
+                        pos++; // skip {
+                        let openBraces = 1;
+                        while (openBraces > 0 && pos < template.length) {
+                            if (template[pos] === '{') openBraces++;
+                            if (template[pos] === '}') openBraces--;
+                            if (openBraces > 0) value += template[pos++];
+                        }
+                        pos++; // skip }
+                        props[key] = { type: 'expr', content: value.trim() };
+                    } else {
+                        const quote = template[pos++];
+                        while (pos < template.length && template[pos] !== quote) {
+                            value += template[pos++];
+                        }
+                        pos++; // skip quote
+                        props[key] = value;
                     }
-                    pos++; // skip quote
-                    props[key] = value;
                 } else {
                     props[key] = true;
                 }
@@ -52,8 +64,11 @@ export const parse = (template: string): ASTNode => {
                     if (template[pos] === '{') {
                         pos++; // skip {
                         let expr = '';
-                        while (template[pos] !== '}') {
-                            expr += template[pos++];
+                        let openBraces = 1;
+                        while (openBraces > 0 && pos < template.length) {
+                            if (template[pos] === '{') openBraces++;
+                            if (template[pos] === '}') openBraces--;
+                            if (openBraces > 0) expr += template[pos++];
                         }
                         pos++; // skip }
                         children.push({ type: 'expr', content: expr.trim() });

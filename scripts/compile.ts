@@ -18,12 +18,26 @@ const compile = (inputFile: string, outputFile: string) => {
     console.log(`Compiled ${inputFile} -> ${outputFile}`);
 };
 
-// Example usage strictly for the todo example as per requirements
-const todoTemplate = path.join(process.cwd(), 'packages/todo-example/src/templates/todo-list.dnr');
-const todoOutput = path.join(process.cwd(), 'packages/todo-example/src/generated/todo-render.ts');
+const inputFile = process.argv[2];
+const outputFile = process.argv[3];
 
-if (fs.existsSync(todoTemplate)) {
-    compile(todoTemplate, todoOutput);
+if (inputFile && outputFile) {
+    const inputPath = path.isAbsolute(inputFile) ? inputFile : path.join(process.cwd(), inputFile);
+    const outputPath = path.isAbsolute(outputFile) ? outputFile : path.join(process.cwd(), outputFile);
+
+    if (fs.existsSync(inputPath)) {
+        compile(inputPath, outputPath);
+    } else {
+        console.error(`Template not found: ${inputPath}`);
+    }
 } else {
-    console.error(`Template not found: ${todoTemplate}`);
+    // Fallback to todo example if no args
+    const todoTemplate = path.join(process.cwd(), 'packages/todo-example/src/templates/todo-list.dnr');
+    const todoOutput = path.join(process.cwd(), 'packages/todo-example/src/generated/todo-render.ts');
+
+    if (fs.existsSync(todoTemplate)) {
+        compile(todoTemplate, todoOutput);
+    } else {
+        console.error(`Template not found: ${todoTemplate}`);
+    }
 }
