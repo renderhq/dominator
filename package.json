@@ -1,29 +1,18 @@
 {
-  "name": "dominator",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "dominator-monorepo",
+  "private": true,
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/pavanscales/dominator.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/pavanscales/dominator/issues"
-  },
-  "homepage": "https://github.com/pavanscales/dominator#readme",
-  "dependencies": {
-    "ts-node": "^10.9.2",
-    "typescript": "^5.9.3"
+    "build": "pnpm --filter ./packages/* run build",
+    "compile": "ts-node --esm scripts/compile.ts",
+    "dev": "pnpm --filter todo-example run dev",
+    "test": "vitest"
   },
   "devDependencies": {
-    "eslint": "^9.38.0",
-    "prettier": "^3.6.2"
-  }
+    "typescript": "^5.5.0",
+    "ts-node": "^10.9.2",
+    "@types/node": "^20.14.0",
+    "vitest": "^1.6.0"
+  },
+  "packageManager": "pnpm@9.0.0"
 }

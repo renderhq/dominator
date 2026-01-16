@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dominator Todo</title>
+    <style>
+      body { font-family: system-ui; background: #121212; color: #fff; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+      #app { background: #1e1e1e; padding: 2rem; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); width: 100%; max-width: 400px; }
+      .input-group { display: flex; gap: 0.5rem; margin-bottom: 1rem; }
+      input { flex: 1; padding: 0.5rem; border-radius: 4px; border: 1px solid #333; background: #2a2a2a; color: #fff; }
+      button { padding: 0.5rem 1rem; border-radius: 4px; border: none; background: #007aff; color: #fff; cursor: pointer; }
+      .todo-list { list-style: none; padding: 0; }
+      .todo-list li { display: flex; justify-content: space-between; padding: 0.5rem; border-bottom: 1px solid #333; }
+      .todo-list li.done span { text-decoration: line-through; color: #888; }
+      .footer { margin-top: 1rem; font-size: 0.8rem; color: #888; }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

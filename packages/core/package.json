@@ -1,0 +1,13 @@
+{
+    "name": "@dominator/core",
+    "version": "0.0.1",
+    "type": "module",
+    "main": "./src/index.ts",
+    "scripts": {
+        "build": "tsc"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "typescript": "^5.5.0"
+    }
+}

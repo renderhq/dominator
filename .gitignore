@@ -1,8 +1,12 @@
 # Build output
 /dist/
+/packages/*/dist/
+/packages/todo-example/src/generated/
 
 # Node modules
-/node_modules/
+node_modules/
+/packages/*/node_modules/
 
-# Optional scripts or temp
-/scripts/
+# OS files
+.DS_Store
+Thumbs.db

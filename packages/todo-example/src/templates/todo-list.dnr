@@ -1,0 +1,13 @@
+<div class="todo-app">
+  <h1>Dominator Todo</h1>
+  <div class="input-group">
+    <input type="text" placeholder="What needs to be done?" id="todo-input" />
+    <button onclick="addTodo">Add</button>
+  </div>
+  <ul class="todo-list">
+    {todoItems}
+  </ul>
+  <div class="footer">
+    <span>{remainingCount} items left</span>
+  </div>
+</div>
