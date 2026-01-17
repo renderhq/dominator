@@ -5,9 +5,11 @@ export * from './batch.ts';
 export * from './events.ts';
 export * from './pool.ts';
 export * from './signal.ts';
-
+export * from './router.ts';
+export * from './ssr.ts';
 
 export interface DominatorApp<T> {
+
     state: T;
     render: (state: T) => void;
 }
