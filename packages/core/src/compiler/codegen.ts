@@ -48,6 +48,7 @@ export const codegen = (instructions: Instruction[]): string => {
                 break;
             case 'expr': {
                 const expr = args[0];
+                // Check if it's a loop or a simple value
                 if (expr.includes('.map(') || expr.includes('Array.from')) {
                     code += `  const ${target} = document.createDocumentFragment();\n`;
                     if (expr.includes('GRID_SIZE')) {
