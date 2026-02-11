@@ -7,7 +7,7 @@ export const codegen = (instructions: Instruction[], functionName = 'render'): s
     code += '  const state = stateModule as any;\n';
     code += '  const events = (window as any);\n\n';
     code += '  // Dynamic injection of state into local scope\n';
-    code += '  const { currentColor, tool, pixels, history, redoStack, GRID_SIZE, colorCounts, undo, redo, exportToPNG, startDrawing, ifDrawing, stopDrawing, PARTICLE_COUNT, getParticles, frame, mouse, NODE_COUNT, getNodes, fps, opsPerSec } = state;\n';
+    code += '  const { currentColor, tool, pixels, history, redoStack, GRID_SIZE, colorCounts, undo, redo, exportToPNG, startDrawing, ifDrawing, stopDrawing, PARTICLE_COUNT, getParticles, frame, mouse, NODE_COUNT, getNodes, fps, opsPerSec, mode } = state;\n';
 
     const generateBlock = (instrs: Instruction[]): string => {
         let blockCode = '';

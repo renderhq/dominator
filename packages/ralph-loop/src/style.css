@@ -1,85 +1,81 @@
 :root {
-  --bg: #030303;
-  --fg: #f5f5f7;
-  --accent: #0070f3;
-  --glass: rgba(15, 15, 20, 0.85);
-  --border: rgba(255, 255, 255, 0.1);
+  --bg: #000;
+  --fg: #fff;
+  --accent: #f00;
 }
 
 body {
   margin: 0;
   background: var(--bg);
-  color: var(--fg);
-  font-family: 'Inter', system-ui, sans-serif;
   overflow: hidden;
+  font-family: 'Geist Mono', monospace;
 }
 
 .ralph-container {
   width: 100vw;
   height: 100vh;
   position: relative;
-  background: #000;
+  background: radial-gradient(circle at center, #111, #000);
+}
+
+.status-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0.1;
+  font-size: 20vw;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -0.05em;
+  white-space: nowrap;
+}
+
+.mode-indicator {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.1;
+  }
+
+  50% {
+    opacity: 0.2;
+  }
+
+  100% {
+    opacity: 0.1;
+  }
 }
 
 .dashboard {
   position: absolute;
   top: 24px;
-  left: 24px;
-  background: var(--glass);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--border);
-  padding: 20px;
-  border-radius: 12px;
-  z-index: 100;
-  pointer-events: none;
+  right: 24px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #333;
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
+.metric {
+  text-align: right;
 }
 
-.header h1 {
-  margin: 0;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-weight: 700;
-}
-
-.accent {
+.value {
+  font-size: 24px;
+  font-weight: bold;
   color: var(--accent);
-}
-
-.version {
-  font-size: 9px;
-  color: #555;
-}
-
-.metrics {
-  display: flex;
-  gap: 24px;
+  display: block;
 }
 
 .metric label {
-  display: block;
-  font-size: 8px;
-  color: #888;
+  font-size: 10px;
+  color: #666;
   text-transform: uppercase;
-  margin-bottom: 2px;
-}
-
-.metric .value {
-  font-size: 16px;
-  font-weight: 700;
-  color: #fff;
-}
-
-.metric small {
-  font-size: 9px;
-  color: #444;
 }
 
 .viewport {
@@ -90,10 +86,12 @@ body {
 
 .node {
   position: absolute;
-  width: 4px;
-  height: 4px;
+  width: 3px;
+  height: 3px;
   border-radius: 50%;
   top: 0;
   left: 0;
-  will-change: transform;
+  will-change: transform, background-color;
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
+  /* Glowing particles */
 }

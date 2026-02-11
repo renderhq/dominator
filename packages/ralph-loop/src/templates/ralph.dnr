@@ -1,33 +1,22 @@
 <div class="ralph-container">
-  <div class="dashboard">
-    <div class="header">
-      <h1>Dominator <span class="accent">SSA Engine</span></h1>
-      <span class="version">v2.1 Turbo</span>
-    </div>
-    
-    <div class="metrics">
-      <div class="metric">
-        <label>Active Nodes</label>
-        <span class="value">{NODE_COUNT}</span>
-      </div>
-      <div class="metric">
-        <label>Frame Rate</label>
-        <span class="value">{fps()} <small>FPS</small></span>
-      </div>
-      <div class="metric">
-        <label>Pipeline</label>
-        <span class="value">GPU <small>Accel</small></span>
-      </div>
-    </div>
+  <div class="status-overlay">
+    <div class="mode-indicator">{mode().toUpperCase()}</div>
   </div>
 
   <div class="viewport">
     {#each getNodes() as n}
       <div 
         class="node" 
-        style:transform={n.transform()}
+        style:transform={n.transform}
         style:backgroundColor={n.color}
       />
     {/each}
+  </div>
+  
+  <div class="dashboard">
+    <div class="metric">
+       <span class="value">{fps()}</span>
+       <label>FPS</label>
+    </div>
   </div>
 </div>
