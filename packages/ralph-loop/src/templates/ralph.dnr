@@ -1,14 +1,22 @@
 <div class="ralph-container">
-  <div class="hud">
-    <h1>Dominator Render Pipeline</h1>
-    <div class="meta">
-      <div class="entry">
+  <div class="dashboard">
+    <div class="header">
+      <h1>Dominator <span class="accent">SSA Engine</span></h1>
+      <span class="version">v2.1 Turbo</span>
+    </div>
+    
+    <div class="metrics">
+      <div class="metric">
         <label>Active Nodes</label>
-        <span>{NODE_COUNT}</span>
+        <span class="value">{NODE_COUNT}</span>
       </div>
-      <div class="entry">
-        <label>Engine</label>
-        <span>SSA Instruction set</span>
+      <div class="metric">
+        <label>Frame Rate</label>
+        <span class="value">{fps()} <small>FPS</small></span>
+      </div>
+      <div class="metric">
+        <label>Pipeline</label>
+        <span class="value">GPU <small>Accel</small></span>
       </div>
     </div>
   </div>
@@ -17,9 +25,8 @@
     {#each getNodes() as n}
       <div 
         class="node" 
-        style:left={n.x() + 'px'}
-        style:top={n.y() + 'px'}
-        style:backgroundColor={n.color()}
+        style:transform={n.transform()}
+        style:backgroundColor={n.color}
       />
     {/each}
   </div>

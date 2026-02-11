@@ -1,15 +1,16 @@
 :root {
-  --bg: #000000;
-  --fg: #ffffff;
+  --bg: #030303;
+  --fg: #f5f5f7;
   --accent: #0070f3;
-  --gray: #222222;
+  --glass: rgba(15, 15, 20, 0.85);
+  --border: rgba(255, 255, 255, 0.1);
 }
 
 body {
   margin: 0;
   background: var(--bg);
   color: var(--fg);
-  font-family: 'Geist Mono', monospace;
+  font-family: 'Inter', system-ui, sans-serif;
   overflow: hidden;
 }
 
@@ -17,53 +18,82 @@ body {
   width: 100vw;
   height: 100vh;
   position: relative;
+  background: #000;
 }
 
-.hud {
+.dashboard {
   position: absolute;
-  top: 20px;
-  left: 20px;
-  background: rgba(0, 0, 0, 0.8);
-  border: 1px solid var(--gray);
-  padding: 16px;
+  top: 24px;
+  left: 24px;
+  background: var(--glass);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  padding: 20px;
+  border-radius: 12px;
   z-index: 100;
   pointer-events: none;
 }
 
-.hud h1 {
-  margin: 0 0 12px 0;
-  font-size: 14px;
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 11px;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+}
+
+.accent {
   color: var(--accent);
 }
 
-.meta {
+.version {
+  font-size: 9px;
+  color: #555;
+}
+
+.metrics {
   display: flex;
-  gap: 20px;
+  gap: 24px;
 }
 
-.entry label {
+.metric label {
   display: block;
-  font-size: 10px;
-  color: #666;
+  font-size: 8px;
+  color: #888;
   text-transform: uppercase;
+  margin-bottom: 2px;
 }
 
-.entry span {
-  font-size: 12px;
+.metric .value {
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.metric small {
+  font-size: 9px;
+  color: #444;
 }
 
 .viewport {
   position: absolute;
   inset: 0;
+  pointer-events: none;
 }
 
 .node {
   position: absolute;
-  width: 6px;
-  height: 6px;
-  border-radius: 1px;
-  transform: translate(-50%, -50%);
-  will-change: left, top, background-color;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+  will-change: transform;
 }
