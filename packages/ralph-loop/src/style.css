@@ -1,0 +1,69 @@
+:root {
+  --bg: #000000;
+  --fg: #ffffff;
+  --accent: #0070f3;
+  --gray: #222222;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Geist Mono', monospace;
+  overflow: hidden;
+}
+
+.ralph-container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.hud {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid var(--gray);
+  padding: 16px;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.hud h1 {
+  margin: 0 0 12px 0;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--accent);
+}
+
+.meta {
+  display: flex;
+  gap: 20px;
+}
+
+.entry label {
+  display: block;
+  font-size: 10px;
+  color: #666;
+  text-transform: uppercase;
+}
+
+.entry span {
+  font-size: 12px;
+}
+
+.viewport {
+  position: absolute;
+  inset: 0;
+}
+
+.node {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 1px;
+  transform: translate(-50%, -50%);
+  will-change: left, top, background-color;
+}
